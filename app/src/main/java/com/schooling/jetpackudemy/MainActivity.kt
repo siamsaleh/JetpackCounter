@@ -38,6 +38,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             JetpackUdemyTheme {
+                // Counter Done
                 MyApp()
             }
         }

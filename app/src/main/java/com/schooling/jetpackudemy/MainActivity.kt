@@ -48,56 +48,12 @@ class MainActivity : ComponentActivity() {
 @Preview(showSystemUi = true, device = "id:pixel_5")
 @Composable
 fun MyApp() {
-    val moneyCounter = remember {
-        mutableIntStateOf(0)
-    }
     Surface(
         modifier = Modifier
             .fillMaxHeight()
             .fillMaxWidth(),
         color = Color.Blue
     ) {
-        Column(
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Text(text = "$${moneyCounter.intValue}", style = TextStyle(
-                fontSize = 39.sp),
-                color = Color.White,
-                fontWeight = FontWeight.ExtraBold
-            )
-            Spacer(modifier = Modifier.height(30.dp))
-            CreateCircle(moneyCounter = moneyCounter.intValue){newValue ->
-                moneyCounter.intValue = newValue
-            }
-            if (moneyCounter.intValue > 25){
-                Text(text = "Lots of Money", style = TextStyle(
-                    fontSize = 15.sp),
-                    color = Color.White
-                )
-            }
-        }
-    }
-}
 
-@Composable
-fun CreateCircle(moneyCounter: Int = 0, UpdateMoneyCounter: (Int) -> Unit) { // Unit is return nothing
-    Card(
-        modifier = Modifier
-            .padding(3.dp)
-            .size(150.dp), shape = CircleShape,
-        elevation = CardDefaults.cardElevation(10.dp),
-        border = BorderStroke(1.dp, color = Color.Red)
-    ) {
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .clickable {
-                    UpdateMoneyCounter(moneyCounter + 1)
-                },
-            contentAlignment = Alignment.Center
-        ) {
-            Text(text = "Tap", fontSize = 25.sp, modifier = Modifier)
-        }
     }
 }
